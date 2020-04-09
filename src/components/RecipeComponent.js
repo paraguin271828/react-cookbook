@@ -4,7 +4,7 @@ export default function RecipeComponent({ data }) {
   //console.log(data);
 
   const ingredients = data.extendedIngredients;
-  console.log(ingredients);
+  //console.log(ingredients);
 
   const ingrFunc = ingredients.map((el, index) => {
     //console.log(ingredients);
@@ -19,11 +19,11 @@ export default function RecipeComponent({ data }) {
   return (
     <div className="row">
       <div className="card">
-        <h2>{data.strMeal}</h2>
-        <div className="col-sm-6">
+        <h2>{data.title}</h2>
+        <div className="col-sm-120">
           <img src={data.image} alt="theregoesanalttag" />
         </div>
-        <table className="table col-sm-6">
+        <table className="table col-sm-120">
           <tbody>
             <tr>
               <td>Table of Ingredients</td>

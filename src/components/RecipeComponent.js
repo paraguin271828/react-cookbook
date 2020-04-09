@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function RecipeComponent({ data }) {
+export default function RecipeComponent({ data, deleteItem }) {
   //console.log(data);
 
   const ingredients = data.extendedIngredients;
@@ -33,7 +33,7 @@ export default function RecipeComponent({ data }) {
         </table>
         <p />
         <div>
-          <button type="button" className="btn btn-danger">
+          <button type="button" className="btn btn-danger" onClick={deleteItem}>
             <i className="fas fa-trash-alt" /> Delete
           </button>
         </div>

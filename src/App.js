@@ -15,11 +15,15 @@ export default function App() {
   const [recipeResult, setRecipeResult] = useState([null]);
 
   useEffect(() => {
+    fetchFunction();
+  }, []);
+
+  const fetchFunction = () => {
     fetch(app_url)
       .then(res => res.json())
       .then(res => setRecipeResult(res))
       .catch(() => console.log("Why do we still get this error?"));
-  }, []);
+  };
 
   const fetchedRecipes =
     recipeResult.recipes &&
@@ -44,6 +48,7 @@ export default function App() {
 
   return (
     <div className="App">
+      <button onClick={fetchFunction}>Fetch recipes</button>
       {recipeResult.recipes ? fetchedRecipes : "fetching data"}
     </div>
   );

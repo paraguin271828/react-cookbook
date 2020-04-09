@@ -20,38 +20,12 @@ export default function App() {
   const fetchedRecipes =
     recipeResult.recipes &&
     recipeResult.recipes.map((element, index) => {
-      //console.log(element);
       return <RecipeComponent key={index} data={element} />;
     });
-  //console.log(fetchedRecipes);
 
-  /*const recipeList = [];
-
-  function pushRecipes() {
-    if (recipeResult.meals) {
-      console.log("yes");
-      recipeResult.meals.map((element, index) => {
-        return recipeList.push(element);
-      });
-    }
-  }
-  pushRecipes();
-  console.log(recipeList)
-*/
   return (
     <div className="App">
-      {/*recipeResult.meals ? recipeResult.meals[0].strMeal : "fetching data"*/}
       {recipeResult.recipes ? fetchedRecipes : "fetching data"}
-
-      {/*<i className="fas fa-star" />*/}
     </div>
   );
 }
-
-/*
-const array1 = [1, 4, 9, 16];
-
-// pass a function to map
-const map1 = array1.map(x => x * 2);
-
-console.log(map1);*/

@@ -34,7 +34,7 @@ export default function RecipeComponent({ data, deleteItem }) {
           <tbody>{ingrFunc}</tbody>
         </table>
         <p />
-        <div class="toolbar">
+        <div className="toolbar">
           <button type="button" className="btn btn-danger" onClick={deleteItem}>
             <i className="fas fa-trash-alt" /> Delete
           </button>

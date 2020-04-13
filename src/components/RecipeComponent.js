@@ -19,20 +19,22 @@ export default function RecipeComponent({ data, deleteItem }) {
   return (
     <div className="row">
       <div className="card">
-        <h2>{data.title}</h2>
-        <div className="col-sm-120">
+        <div className="col image_container">
           <img src={data.image} alt="theregoesanalttag" />
         </div>
-        <table className="table col-sm-120">
-          <tbody>
+        <h2>{data.title}</h2>
+        <table className="table table-hover col col-sm-12">
+          <caption>Table of Ingredients</caption>
+          <thead className="thead-light">
             <tr>
-              <td>Table of Ingredients</td>
+              <th>Ingredient</th>
+              <th>Amount</th>
             </tr>
-            {ingrFunc}
-          </tbody>
+          </thead>
+          <tbody>{ingrFunc}</tbody>
         </table>
         <p />
-        <div>
+        <div class="toolbar">
           <button type="button" className="btn btn-danger" onClick={deleteItem}>
             <i className="fas fa-trash-alt" /> Delete
           </button>

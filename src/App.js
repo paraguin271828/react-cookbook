@@ -44,11 +44,14 @@ export default function App() {
     console.log(tempArr);
     setRecipeResult({ recipes });
   }
-  //deleteItem();
 
   return (
-    <div className="App">
-      <button onClick={fetchFunction}>Fetch recipes</button>
+    <div className="App container">
+      <div className="toolbar">
+        <button className="btn btn-info" onClick={fetchFunction}>
+          Fetch recipes
+        </button>
+      </div>
       {recipeResult.recipes ? fetchedRecipes : "fetching data"}
     </div>
   );

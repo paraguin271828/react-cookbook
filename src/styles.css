@@ -2,12 +2,39 @@
   font-family: sans-serif;
   text-align: center;
 }
+.App .toolbar {
+  text-align: right;
+  position: relative;
+  display: block;
+}
+
+.row {
+  padding: 15px;
+}
+
+h2 {
+  font-size: 1.5em;
+  font-weight: 700;
+  margin: 1em auto;
+}
 
 .card {
   margin: 0 auto;
+}
+.card .image_container {
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 .card img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+table caption {
+  font-size: 85%;
+  font-style: italic;
+  text-align: right;
+  padding: 0.5em;
 }

@@ -5,7 +5,7 @@ import Menu from "./components/Menu";
 
 // const app_url = "https://www.themealdb.com/api/json/v1/1/search.php?f=a";
 
-const app_key = "c2230a382f204d5baf6c80cdc0569aea1"; // felix
+const app_key = "c2230a382f204d5baf6c80cdc0569aea"; // felix
 // const app_key = "4852133db1384781b04fd81badd09bfa" // alfredo
 // const app_key = "164c4f1bc5fa47919f2d66ee409af504"; // dennis
 

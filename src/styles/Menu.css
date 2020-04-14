@@ -1,0 +1,44 @@
+#menu_button {
+  text-align: left;
+  position: absolute;
+  top: 10px;
+  left: 15px;
+}
+#menu_button input {
+  position: absolute;
+  left: -9999px;
+}
+
+#menu_button input[type="checkbox"]:checked + #menu ul {
+  left: -15px;
+  width: auto;
+}
+
+#menu_button label {
+  cursor: pointer;
+  text-align: left;
+  z-index: 10;
+}
+#menu_button label i {
+  font-size: 200%;
+  padding: 10px;
+}
+
+#menu ul {
+  color: white;
+  text-align: left;
+  text-transform: capitalize;
+  list-style-type: none;
+  position: absolute;
+  margin: 0;
+  padding: 15px;
+  padding-top: 60px;
+  top: -15px;
+  left: -99px;
+  width: 0;
+  height: 100vh;
+  transition: left 500ms linear, width 500ms linear;
+  overflow-y: hidden;
+  background: #17a2b8;
+  z-index: -1;
+}

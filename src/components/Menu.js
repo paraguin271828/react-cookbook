@@ -5,7 +5,7 @@ export default function Menu() {
   return (
     <div>
       <div id="menu_button">
-        <label for="menu_checkbox">
+        <label htmlFor="menu_checkbox">
           <i className="fas fa-bars" />
         </label>
         <input type="checkbox" id="menu_checkbox" />

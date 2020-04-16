@@ -1,0 +1,21 @@
+.card {
+  margin: 0 auto;
+  margin-bottom: 5rem;
+}
+
+table caption {
+  font-size: 85%;
+  font-style: italic;
+  text-align: right;
+  padding: 0.5em;
+}
+
+tbody td:first-of-type {
+    font-style: italic;
+    text-align: right;
+}
+
+tbody td:last-of-type {
+    font-weight: 700;
+    text-align: left;
+}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./styles.css";
+import "./App.css";
 import RecipeComponent from "./components/RecipeComponent";
 import Menu from "./components/Menu";
 

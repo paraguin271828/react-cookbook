@@ -39,7 +39,7 @@ export default function RecipeComponent({ data, deleteItem }) {
                 </table>
               </div>
             
-              <a href={data.sourceUrl} className="btn btn-primary" target="_blank">Go to recipe</a>
+              <a href={data.sourceUrl} className="btn btn-primary" target="_blank" rel="noopener noreferrer">Go to recipe</a>
             </div>
           
             <div className="card-footer toolbar">

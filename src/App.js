@@ -8,8 +8,8 @@ import Menu from "./components/Menu";
 // const app_url = "https://www.themealdb.com/api/json/v1/1/search.php?f=a";
 
 // const api_key = "c2230a382f204d5baf6c80cdc0569aea"; // felix
-const api_key = "4852133db1384781b04fd81badd09bfa" // alfredo
-// const api_key = "164c4f1bc5fa47919f2d66ee409af504"; // dennis
+// const api_key = "4852133db1384781b04fd81badd09bfa" // alfredo
+const api_key = "164c4f1bc5fa47919f2d66ee409af504"; // dennis
 
 const api_url = {
     random: "https://api.spoonacular.com/recipes/random/?apiKey=" + api_key + "&number=3",
@@ -47,24 +47,11 @@ export default function App() {
       );
     });
     
-  const Vegetarian = () => {
-      let {vegetarian} = useParams();
-      setCategory(vegetarian);
-      console.log(category);
-      const fetchNow = () => {fetchFunction(api_url[category])};
-      console.log(api_url[category]);
-      return <div>{vegetarian}</div>;
+  const FilteredRecipes = () => {
+      let {categoryName} = useParams();
+      return <div>ghel</div>;
   }
   
-    const Vegan = () => {
-      let {vegan} = useParams();
-      setCategory(vegan);
-      console.log(category);
-      const fetchNow = () => {fetchFunction(api_url[category])};
-      console.log(api_url[category]);
-      return <div>{vegan}</div>;
-  }
-
   function deleteItem(id) {
     console.log(recipeResult);
     const tempArr = Array.from(recipeResult.recipes);
@@ -75,8 +62,7 @@ export default function App() {
   
   function RenderRecipes () {
       setCategory('random');
-      console.log(category);
-      const fetchNow = () => {fetchFunction(api_url[category])};
+     fetchFunction(api_url[category]);
       return <div>Home</div>;
   }
 
@@ -86,7 +72,6 @@ export default function App() {
         <h1>Limited Recipes</h1>
         <h6>Better be fast</h6>
       </header>
-      <Menu />
       <div className="toolbar">
         <button className="btn btn-info" onClick={() => fetchFunction(api_url[category])}>
           Fetch recipes
@@ -94,26 +79,24 @@ export default function App() {
       </div>
       
       <Router>
+        <Menu />
         <Switch>
-          <Route path="/category/:vegetarian">
-            <Vegetarian />
-          </Route>
-          <Route path="/category/:vegan">
-            <Vegan />
+          <Route path="/category/:categoryName">
+            <FilteredRecipes />
           </Route>
           <Route path="/">
-            <RenderRecipes />
-          </Route>
-        </Switch>
-      </Router>
-      
-      {recipeResult.recipes ? (
+          {recipeResult.recipes ? (
               fetchedRecipes
             ) : (
               <div className="spinner-border" role="status">
                 <span className="sr-only">Loading...</span>
               </div>
             )}
+          </Route>
+        </Switch>
+      </Router>
+      
+      
     </div>
   );
 }

@@ -11,13 +11,12 @@ export default function Menu() {
         </label>
         <input type="checkbox" id="menu_checkbox" />
 
-		<Router>
 			<nav id="menu">
 			  <ul>
 			    <li><Link to="/">home</Link></li>
 				<li>meat</li>
-				<li><Link to="/category/vegetarian">vegetarian</Link></li>
-				<li><Link to="/category/vegan">vegan</Link></li>
+				<li><Link  to="/category/vegetarian">vegetarian</Link></li>
+				<li><Link  to="/category/vegan">vegan</Link></li>
 				<li>glutenFree</li>
 				<li>dairyFree</li>
 				<li>veryHealthy</li>
@@ -26,7 +25,6 @@ export default function Menu() {
 				<li>sustainable</li>
 			  </ul>
 			</nav>
-        </Router>
       </div>
     </div>
   );

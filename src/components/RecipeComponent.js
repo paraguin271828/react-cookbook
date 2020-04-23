@@ -60,7 +60,7 @@ export default function RecipeComponent({ data, deleteItem }) {
       <div className="row">
         <div className="col">
           <div className="card">
-            <img className="card-img-top" src={data.image} alt="theregoesanalttag" />
+            <img className="card-img-top" src={data.image ? "https:"+data.image.fields.file.url : placeholderImg} alt="theregoesanalttag" />
 
             <div className="card-body">
               <h2 className="card-title">{data.title}</h2>

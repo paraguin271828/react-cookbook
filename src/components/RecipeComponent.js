@@ -2,12 +2,12 @@ import React from "react";
 import "../styles/RecipeComponent.css";
 
 export default function RecipeComponent({ data, deleteItem }) {
-  //console.log(data);
+  console.log("Data: " + data);
 
-  const ingredients = data.extendedIngredients;
+  const ingredients = data.ingredients;
   //console.log(ingredients);
 
-  const ingrFunc = ingredients.map((el, index) => {
+/*  const ingrFunc = ingredients.map((el, index) => {
     //console.log(ingredients);
     return (
       <tr key={index}>
@@ -15,7 +15,7 @@ export default function RecipeComponent({ data, deleteItem }) {
         <td>{el["name"]}</td>
       </tr>
     );
-  });
+  });*/
 
   return (
     <div className="recipe_component">
@@ -35,10 +35,10 @@ export default function RecipeComponent({ data, deleteItem }) {
                       <th className="col-6">Ingredient</th>
                     </tr>
                   </thead>
-                  <tbody>{ingrFunc}</tbody>
+                  <tbody>{data.ingredients}</tbody>
                 </table>
               </div>
-            
+              <div className="total-time">{data.readyInMinutes}</div> 
               <a href={data.sourceUrl} className="btn btn-primary" target="_blank" rel="noopener noreferrer">Go to recipe</a>
             </div>
           

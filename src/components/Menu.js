@@ -11,20 +11,20 @@ export default function Menu() {
         </label>
         <input type="checkbox" id="menu_checkbox" />
 
-			<nav id="menu">
-			  <ul>
-			    <li><Link to="/">home</Link></li>
-				<li>meat</li>
-				<li><Link  to="/category/vegetarian">vegetarian</Link></li>
-				<li><Link  to="/category/vegan">vegan</Link></li>
-				<li>glutenFree</li>
-				<li>dairyFree</li>
-				<li>veryHealthy</li>
-				<li>cheap</li>
-				<li>veryPopular</li>
-				<li>sustainable</li>
-			  </ul>
-			</nav>
+  			<nav id="menu">
+  			  <ul>
+  			    <li><Link to="/">home</Link></li>
+    				<li>meat</li>
+    				<li><Link  to="/category/vegetarian">vegetarian</Link></li>
+    				<li><Link  to="/category/vegan">vegan</Link></li>
+    				<li>glutenFree</li>
+    				<li>dairyFree</li>
+    				<li>veryHealthy</li>
+    				<li>cheap</li>
+    				<li>veryPopular</li>
+    				<li>sustainable</li>
+  			  </ul>
+  			</nav>
       </div>
     </div>
   );

@@ -21,6 +21,16 @@ tbody td:last-of-type {
     text-align: left;
 }
 
+.card .image-container {
+  height: auto;
+  max-height: 24rem;
+}
+.card .image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .ingredients {
   text-align: center;
 }

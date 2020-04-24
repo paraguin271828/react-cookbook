@@ -6,40 +6,26 @@ import Backgrounds from "./backgrounds.json";
 import RecipeComponent from "./components/RecipeComponent";
 import Menu from "./components/Menu";
 
-// const api_key = "c2230a382f204d5baf6c80cdc0569aea"; // felix
-// const api_key = "4852133db1384781b04fd81badd09bfa" // alfredo
-// const api_key = "164c4f1bc5fa47919f2d66ee409af504"; // dennis
-
-/*const api_url = {
-    random: "https://api.spoonacular.com/recipes/random/?apiKey=" + api_key + "&number=3",
-    vegetarian: "https://api.spoonacular.com/recipes/random/?apiKey=" + api_key + "&number=3&tags=vegetarian",
-    vegan: "https://api.spoonacular.com/recipes/random/?apiKey=" + api_key + "&number=3&tags=vegan"
-}*/
-
+// Setup Contentful client
+// Content model is hosted on Alfredo's account
 const client = contentful.createClient({
 	space: "fq3y9i3n1f0a",
 	accessToken: "Sdqy2_2zkT4xfgCySaZ9loL93bDbnFdUfibDdCRhZ5Y"
 });
 
-const api_url = {
-	random: "https://cdn.contentful.com/spaces/fq3y9i3n1f0a/entries?access_token=Sdqy2_2zkT4xfgCySaZ9loL93bDbnFdUfibDdCRhZ5Y"
-}
-
-const RandomBackground = ({backgrounds}) => {
-	const bgImage = "./" + backgrounds.path + backgrounds.images[Math.floor(Math.random()*backgrounds.images.length)].filename;
-
-	console.log(backgrounds.images[0]);
-	console.log(backgrounds.images.length);
-	console.log(bgImage);
-
-	return <figure className="background-image"><img src={bgImage} alt="background image"/></figure>
-}
+// API URLs for different categories
+/*const api_url = {
+	random: "https://cdn.contentful.com/spaces/fq3y9i3n1f0a/entries?access_token=Sdqy2_2zkT4xfgCySaZ9loL93bDbnFdUfibDdCRhZ5Y",
+	vegetarian: "https://cdn.contentful.com/spaces/fq3y9i3n1f0a/entries?access_token=Sdqy2_2zkT4xfgCySaZ9loL93bDbnFdUfibDdCRhZ5Y&fields.vegetarian=true"
+}*/
 
 export default function App() {
   const [recipeResult, setRecipeResult] = useState([null]);
-  const [category, setCategory] = useState("random");
 
-	const [backgrounds, setBackgrounds] = useState(Backgrounds);
+	// category needs to be the name of a boolean field in the CMS
+  const [category, setCategory] = useState("home");
+
+	const backgrounds = Backgrounds;
 
 	console.log(recipeResult);
 	console.log(backgrounds);
@@ -47,6 +33,28 @@ export default function App() {
   useEffect(() => {
     fetchFunction();
   }, [category]);
+
+	/*** Choose random background
+	*    Image path, name and details are provided by a JSON file
+	*    The content of it is stored in the backgrounds state variable
+	*    backgrounds.path - the path to the image folder inside `public`
+	*    backgrounds.images - array with objects for each filename
+	*    backgrounds.images[{filename, filetype, author, url}]
+	***/
+	const RandomBackground = ({backgrounds}) => {
+		let curCategory = "";
+		// if the category is set to anything else than random,
+		// we need to go up to the content root first
+		// because of the Route (e.g. /category/vegetarian)
+		curCategory = (category !== "home") ? "../../" : "";
+		const bgImage = curCategory + backgrounds.path + backgrounds.images[Math.floor(Math.random()*backgrounds.images.length)].filename;
+
+		console.log(backgrounds.images[0]);
+		console.log(backgrounds.images.length);
+		console.log(bgImage);
+
+		return <figure className="background-image"><img src={bgImage} alt="background"/></figure>
+	}
 
 /*** keeping this for later when switching from contentful to local API
     const fetchFunction = () => {
@@ -59,8 +67,19 @@ export default function App() {
 
 // TODO: after migration to local API, don't forget to remove contentful in dependencies
 
+console.log(`fields.${category}`);
+
+/*** Fetch items from the content model on Contentful
+*    https://www.contentful.com/developers/docs/javascript/tutorials/using-js-cda-sdk/
+*    Retrieved items are stored in recipeResult as an array
+***/
   const fetchFunction = () => {
-	  client.getEntries()
+	  client.getEntries({
+				content_type: "recipe",
+			  ['fields.'+category]: true, // thanks to ES6, this is possible
+				order: '-sys.createdAt' // sort by newest items first (reverse order with the prefixed -)
+				// TODO: create state variable for sorting options and pass it here
+		})
 		  .then(entries => setRecipeResult(entries))
       .catch(err => console.log("An error occured: " + err));
   };
@@ -80,7 +99,8 @@ export default function App() {
 
   const FilteredRecipes = () => {
       let {categoryName} = useParams();
-      setCategory(categoryName);
+			if(!categoryName) categoryName = 'home';
+      setCategory(categoryName); // set category to render new items
       return <div>{category}</div>;
   }
 
@@ -110,7 +130,7 @@ export default function App() {
           <Route path="/category/:categoryName">
             <FilteredRecipes />
 
-            {recipeResult.recipes ? (
+            {recipeResult.items ? (
                 fetchedRecipes
               ) : (
                 <div className="spinner-border" role="status">
@@ -119,7 +139,7 @@ export default function App() {
               )}
           </Route>
           <Route path="/">
-            {recipeResult.items ? (
+							{recipeResult.items ? (
                 fetchedRecipes
               ) : (
                 <div className="spinner-border" role="status">

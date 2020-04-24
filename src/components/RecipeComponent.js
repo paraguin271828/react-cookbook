@@ -3,10 +3,7 @@ import Markdown from "react-markdown";
 import "../styles/RecipeComponent.css";
 
 export default function RecipeComponent({ data, deleteItem }) {
-  console.log("Data: " + data);
-
   const placeholderImg = "";
-  const ingredients = data.ingredients;
   //console.log(ingredients);
 
 /*  const ingrFunc = ingredients.map((el, index) => {

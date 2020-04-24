@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import {BrowserRouter as Router, Switch, Route, useParams} from "react-router-dom";
 import * as contentful from "contentful";
 import "./App.css";
+import Backgrounds from "./backgrounds.json";
 import RecipeComponent from "./components/RecipeComponent";
 import Menu from "./components/Menu";
 
@@ -24,11 +25,24 @@ const api_url = {
 	random: "https://cdn.contentful.com/spaces/fq3y9i3n1f0a/entries?access_token=Sdqy2_2zkT4xfgCySaZ9loL93bDbnFdUfibDdCRhZ5Y"
 }
 
+const RandomBackground = ({backgrounds}) => {
+	const bgImage = "./" + backgrounds.path + backgrounds.images[Math.floor(Math.random()*backgrounds.images.length)].filename;
+
+	console.log(backgrounds.images[0]);
+	console.log(backgrounds.images.length);
+	console.log(bgImage);
+
+	return <figure className="background-image"><img src={bgImage} alt="background image"/></figure>
+}
+
 export default function App() {
   const [recipeResult, setRecipeResult] = useState([null]);
-  const [category, setCategory] = useState('random');
+  const [category, setCategory] = useState("random");
+
+	const [backgrounds, setBackgrounds] = useState(Backgrounds);
 
 	console.log(recipeResult);
+	console.log(backgrounds);
 
   useEffect(() => {
     fetchFunction();
@@ -48,7 +62,7 @@ export default function App() {
   const fetchFunction = () => {
 	  client.getEntries()
 		  .then(entries => setRecipeResult(entries))
-		  .catch(err => console.log("An error occured: " + err));
+      .catch(err => console.log("An error occured: " + err));
   };
 
   const fetchedRecipes =
@@ -115,8 +129,7 @@ export default function App() {
           </Route>
         </Switch>
       </Router>
-
-
+			<RandomBackground backgrounds={backgrounds}/>
     </div>
   );
 }

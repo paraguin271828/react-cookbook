@@ -1,6 +1,7 @@
 .card {
   margin: 0 auto;
   margin-bottom: 5rem;
+  max-width: 42rem;
 }
 
 table caption {

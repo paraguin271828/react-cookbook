@@ -20,3 +20,10 @@ tbody td:last-of-type {
     font-weight: 700;
     text-align: left;
 }
+
+.ingredients {
+  text-align: center;
+}
+.ingredients ul {
+  list-style-type: none;
+}

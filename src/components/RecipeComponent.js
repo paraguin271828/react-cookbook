@@ -64,7 +64,7 @@ export default function RecipeComponent({ data, deleteItem }) {
 
             <div className="card-body">
               <h2 className="card-title">{data.title}</h2>
-              <div className="ingredients col-sm-12 col-md-6">
+              <div className="ingredients col-sm-12">
                 <Markdown source={data.ingredients} />
               </div>
               <div className="total-time">{data.readyInMinutes}</div>

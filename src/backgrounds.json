@@ -1,0 +1,59 @@
+{
+  "path": "./images/backgrounds/",
+  "images": [
+    {
+      "filename": "brooke-lark-08bOYnH_r_E-unsplash.webp",
+      "filetype": "webp",
+      "author": "Brooke Lark",
+      "url": "https://unsplash.com/photos/08bOYnH_r_E"
+    },
+    {
+      "filename": "brooke-lark-wMzx2nBdeng-unsplash.webp",
+      "filetype": "webp",
+      "author": "Brooke Lark",
+      "url": "https://unsplash.com/photos/wMzx2nBdeng"
+    },
+    {
+      "filename": "bruna-branco-7r1HxvVC7AY-unsplash.webp",
+      "filetype": "webp",
+      "author": "Bruna Branco",
+      "url": "https://unsplash.com/photos/7r1HxvVC7AY"
+    },
+    {
+      "filename": "dan-gold-4_jhDO54BYg-unsplash.webp",
+      "filetype": "webp",
+      "author": "Dan Gold",
+      "url": "https://unsplash.com/photos/7r1HxvVC7AY"
+    },
+    {
+      "filename": "dose-juice-sTPy-oeA3h0-unsplash.webp",
+      "filetype": "webp",
+      "author": "Dose Juice",
+      "url": "https://unsplash.com/photos/sTPy-oeA3h0"
+    },
+    {
+      "filename": "hessam-hojati-M4hazNIyTsk-unsplash.webp",
+      "filetype": "webp",
+      "author": "Hessam Hojati",
+      "url": "https://unsplash.com/photos/M4hazNIyTsk"
+    },
+    {
+      "filename": "katie-smith-uQs1802D0CQ-unsplash.webp",
+      "filetype": "webp",
+      "author": "Katie Smith",
+      "url": "https://unsplash.com/photos/uQs1802D0CQ"
+    },
+    {
+      "filename": "lukas-blazek-f-TWhXOrLiU-unsplash.webp",
+      "filetype": "webp",
+      "author": "Lukas Blazek",
+      "url": "https://unsplash.com/photos/f-TWhXOrLiU"
+    },
+    {
+      "filename": "nordwood-themes-Tmz8FThN_BE-unsplash.webp",
+      "filetype": "webp",
+      "author": "NordWood Themes",
+      "url": "https://unsplash.com/photos/Tmz8FThN_BE"
+    }
+  ]
+}

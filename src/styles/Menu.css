@@ -33,7 +33,9 @@
   font-size: 220%;
   padding: 0 10px;
 }
-
+#menu-container label:hover::before {
+    text-shadow: 0 0 10px #fdfdfd;
+}
 nav {
   color: #fff;
  position: absolute;

@@ -100,6 +100,7 @@ console.log(`fields.${category}`);
 
   const FilteredRecipes = () => {
       let {categoryName} = useParams();
+			if(!categoryName) categoryName = "home";
       setCategory(categoryName); // set category to render new items
       return <div>{category}</div>;
   }

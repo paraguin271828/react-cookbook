@@ -1,48 +1,117 @@
- nav {
-  z-index: 5;
- }
-  
-#menu_button {
+#menu-container {
   text-align: left;
-  position: absolute;
-  top: 10px;
-  left: 15px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 20;
 }
-#menu_button input {
+#menu-container input {
   position: absolute;
   left: -9999px;
 }
 
-#menu_button input[type="checkbox"]:checked + #menu ul {
-  left: -15px;
-  width: auto;
+#menu-container label::before {
+  font-family: 'Font Awesome 5 Free';
+  font-size: 220%;
+  font-weight: 900;
+  color: #333;
+  display: block;
+  position: absolute;
+  right: -30px;
+  content: '\f0c9';
+  transition: right 100ms linear, color 250ms linear;
 }
-
-#menu_button label {
+#menu-container label {
   cursor: pointer;
   text-align: left;
   position: relative;
+  margin: 1rem;
   z-index: 10;
 }
-#menu_button label i {
-  font-size: 200%;
-  padding: 10px;
+#menu-container label i {
+  font-size: 220%;
+  padding: 0 10px;
+}
+
+nav {
+  color: #fff;
+ position: absolute;
+ top: 0;
+ bottom: 0;
+ left: -50vw;
+ margin: 0;
+ padding: 2rem;
+ width: auto;
+ min-width: 50vw;
+ transition: left 250ms linear;
+ overflow-y: hidden;
+ background: linear-gradient(#138496, #084a55);
+ z-index: 5;
 }
 
 #menu ul {
   color: white;
-  text-align: left;
+  text-align: center;
   text-transform: capitalize;
+  line-height: 4rem;
   list-style-type: none;
-  position: absolute;
-  margin: 0;
-  padding: 15px;
-  padding-top: 60px;
-  top: -15px;
-  left: -99px;
-  width: 0;
-  height: 100vh;
-  transition: left 500ms linear, width 500ms linear;
-  overflow-y: hidden;
-  background: #17a2b8;
+  margin: 0 -2rem 0 -1rem;
+  padding: 1rem 0;
+}
+#menu ul li a {
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  padding: .25rem 1rem;
+  background-color: rgba(0,0,0,0);
+  transition: all 1500ms ease;
+}
+#menu ul li a:hover,
+#menu ul li a:focus {
+  padding-left: 1.5rem;
+  background-color: rgba(192,192,192,.8);
+  transition: all 1000ms ease;
+}
+#menu ul li a i {
+  left: initial;
+}
+
+#menu-container input[type="checkbox"]:checked + label::before {
+  color: #fff;
+  right: -43vw;
+  content: '\f00d';
+  transition: right 200ms ease-out 100ms, color 100ms linear;
+}
+
+#menu-container input[type="checkbox"]:checked ~ nav {
+  left: -15px;
+  width: auto;
+  min-width: 50vw;
+  transition: left 250ms ease-out 0s;
+}
+
+/***
+*** MEDIA QUERIES
+***/
+@media screen and (max-width: 479px) {
+  #menu-container input[type="checkbox"]:checked ~ nav {
+    min-width: 95vw;
+    transition: left 500ms ease-out 0s;
+  }
+
+  #menu-container input[type="checkbox"]:checked + label::before {
+    right: -80vw;
+    transition: right 500ms ease-out 100ms, color 250ms linear;
+  }
+
+  nav {
+    left: -350px;
+    width: auto;
+    min-width: 95vw;
+    transition: left 250ms linear;
+  }
 }

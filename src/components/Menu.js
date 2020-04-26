@@ -3,29 +3,24 @@ import {Link} from "react-router-dom";
 import "../styles/Menu.css";
 
 export default function Menu() {
+  const deactivateMenu = () => document.getElementById("menu-checkbox").checked = false;
   return (
-    <div>
-      <div id="menu_button">
-        <label htmlFor="menu_checkbox">
-          <i className="fas fa-bars" />
-        </label>
-        <input type="checkbox" id="menu_checkbox" />
+    <div id="menu-container">
+      <input type="checkbox" id="menu-checkbox" />
+      <label htmlFor="menu-checkbox">
+        &nbsp;
+      </label>
 
-  			<nav id="menu">
-  			  <ul>
-  			    <li><Link to="/">home</Link></li>
-    				<li>meat</li>
-    				<li><Link  to="/category/vegetarian">vegetarian</Link></li>
-    				<li><Link  to="/category/vegan">vegan</Link></li>
-    				<li>glutenFree</li>
-    				<li>dairyFree</li>
-    				<li>veryHealthy</li>
-    				<li>cheap</li>
-    				<li>veryPopular</li>
-    				<li>sustainable</li>
-  			  </ul>
-  			</nav>
-      </div>
+			<nav id="menu">
+        <h3>Menu</h3>
+			  <ul>
+			    <li><Link to="/" onClick={deactivateMenu}><i class="fa-li fa fa-home"></i>home</Link></li>
+  				<li><Link  to="/category/meat" onClick={deactivateMenu}><i class="fa-li fa fa-drumstick-bite"></i>meat</Link></li>
+  				<li><Link  to="/category/vegetarian" onClick={deactivateMenu}><i class="fa-li fa fa-egg"></i>vegetarian</Link></li>
+  				<li><Link  to="/category/vegan" onClick={deactivateMenu}><i class="fa-li fa fa-pepper-hot"></i>vegan</Link></li>
+  				<li><Link  to="/category/sweet" onClick={deactivateMenu}><i class="fa-li fa fa-ice-cream"></i>sweet</Link></li>
+			  </ul>
+			</nav>
     </div>
   );
 }

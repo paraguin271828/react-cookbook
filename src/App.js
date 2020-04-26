@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import {BrowserRouter as Router, Switch, Route, useParams} from "react-router-dom";
 import * as contentful from "contentful";
 import "./App.css";
+import "./styles/fonts.css";
 import Backgrounds from "./backgrounds.json";
 import RecipeComponent from "./components/RecipeComponent";
 import Menu from "./components/Menu";
@@ -99,7 +100,6 @@ console.log(`fields.${category}`);
 
   const FilteredRecipes = () => {
       let {categoryName} = useParams();
-			if(!categoryName) categoryName = 'home';
       setCategory(categoryName); // set category to render new items
       return <div>{category}</div>;
   }
@@ -115,30 +115,33 @@ console.log(`fields.${category}`);
   return (
     <div className="App container">
       <header>
+	      <div className="toolbar">
+	        <button className="btn btn-info" onClick={fetchFunction}>
+	          Fetch recipes
+	        </button>
+	      </div>
         <h1>Limited Recipes</h1>
         <h6>Better be fast</h6>
       </header>
-      <div className="toolbar">
-        <button className="btn btn-info" onClick={fetchFunction}>
-          Fetch recipes
-        </button>
-      </div>
 
       <Router>
         <Menu />
-        <Switch>
-          <Route path="/category/:categoryName">
-            <FilteredRecipes />
+				<section id="recipes">
+	        <Switch>
+	          <Route path="/category/:categoryName">
+	            <FilteredRecipes />
 
-            {recipeResult.items ? (
-                fetchedRecipes
-              ) : (
-                <div className="spinner-border" role="status">
-                  <span className="sr-only">Loading...</span>
-                </div>
-              )}
-          </Route>
-          <Route path="/">
+	            {recipeResult.items ? (
+	                fetchedRecipes
+	              ) : (
+	                <div className="spinner-border" role="status">
+	                  <span className="sr-only">Loading...</span>
+	                </div>
+	              )}
+	          </Route>
+	          <Route path="/">
+							<FilteredRecipes />
+
 							{recipeResult.items ? (
                 fetchedRecipes
               ) : (
@@ -146,8 +149,9 @@ console.log(`fields.${category}`);
                   <span className="sr-only">Loading...</span>
                 </div>
               )}
-          </Route>
-        </Switch>
+	          </Route>
+	        </Switch>
+				</section>
       </Router>
 			<RandomBackground backgrounds={backgrounds}/>
     </div>

@@ -15,10 +15,10 @@ export default function Menu() {
         <h3>Menu</h3>
 			  <ul>
 			    <li><Link to="/" onClick={deactivateMenu}><i class="fa-li fa fa-home"></i>home</Link></li>
-  				<li><Link  to="/category/meat" onClick={deactivateMenu}><i class="fa-li fa fa-drumstick-bite"></i>meat</Link></li>
-  				<li><Link  to="/category/vegetarian" onClick={deactivateMenu}><i class="fa-li fa fa-egg"></i>vegetarian</Link></li>
-  				<li><Link  to="/category/vegan" onClick={deactivateMenu}><i class="fa-li fa fa-pepper-hot"></i>vegan</Link></li>
-  				<li><Link  to="/category/sweet" onClick={deactivateMenu}><i class="fa-li fa fa-ice-cream"></i>sweet</Link></li>
+  				<li><Link to="/category/meat" onClick={deactivateMenu}><i class="fa-li fa fa-drumstick-bite"></i>meat</Link></li>
+  				<li><Link to="/category/vegetarian" onClick={deactivateMenu}><i class="fa-li fa fa-egg"></i>vegetarian</Link></li>
+  				<li><Link to="/category/vegan" onClick={deactivateMenu}><i class="fa-li fa fa-pepper-hot"></i>vegan</Link></li>
+  				<li><Link to="/category/sweet" onClick={deactivateMenu}><i class="fa-li fa fa-ice-cream"></i>sweet</Link></li>
 			  </ul>
 			</nav>
     </div>

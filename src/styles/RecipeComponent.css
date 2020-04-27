@@ -24,8 +24,7 @@ tbody td:last-of-type {
 }
 
 .card .image-container {
-  height: auto;
-  max-height: 24rem;
+  height: 24rem;
 }
 .card .image-container img {
   width: 100%;

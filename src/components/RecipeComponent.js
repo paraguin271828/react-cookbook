@@ -6,6 +6,8 @@ export default function RecipeComponent({ data, deleteItem }) {
   const placeholderImg = "";
   //console.log(ingredients);
 
+  //old structure below change due contentful 
+
 /*  const ingrFunc = ingredients.map((el, index) => {
     //console.log(ingredients);
     return (

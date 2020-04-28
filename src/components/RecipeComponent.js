@@ -6,7 +6,7 @@ export default function RecipeComponent({ data, deleteItem }) {
   const placeholderImg = "";
   //console.log(ingredients);
 
-  //old structure below change due contentful 
+  //old structure below change due contentful
 
 /*  const ingrFunc = ingredients.map((el, index) => {
     //console.log(ingredients);
@@ -60,7 +60,7 @@ export default function RecipeComponent({ data, deleteItem }) {
         <div className="col">
           <div className="card">
             <figure className="image-container">
-              <img className="card-img-top" src={data.image ? "https:"+data.image.fields.file.url : placeholderImg} alt="theregoesanalttag" />
+              <img className="card-img-top" src={data.image.fields ? "https:"+data.image.fields.file.url : placeholderImg} alt="theregoesanalttag" />
             </figure>
 
             <div className="card-body">

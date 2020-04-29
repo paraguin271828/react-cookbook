@@ -133,29 +133,18 @@ export default function App() {
 			console.log(el)}
 		}>
       <header>
-<<<<<<< HEAD
-	      <div className="toolbar">
-	        <button className="btn btn-info" onClick={fetchFunction}>
-	          Fetch recipes
-	        </button>
-	      </div>
-        <h1><span>Alf</span><span>red</span><span>o's</span></h1>
-        <h6>Easy Eat Yum</h6>
-=======
         <div className="toolbar">
           <button className="btn btn-info" onClick={fetchFunction}>
             Fetch recipes
           </button>
         </div>
-        <h1>Limited Recipes</h1>
+        <h1><span>Alf</span><span>red</span><span>o's</span></h1>
         <img
           id="rotatingpizza"
           src="/images/backgrounds/pizza.png"
-          //public\images\backgrounds\pngguru.com.png
           height="120"
         />
-        <h6>Better be fast</h6>
->>>>>>> 84f29c367b5801828a1ed08561652b424176a721
+        <h6>Easy Eat Yum</h6>
       </header>
 
       <Router>

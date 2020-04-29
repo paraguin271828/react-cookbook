@@ -1,6 +1,15 @@
 .App {
   text-align: center;
 }
+.App h1 {
+  color: #f4f5f0;
+}
+.App h1 span:first-of-type {
+  color:  #008c45;
+}
+.App h1 span:last-of-type {
+  color: #cd212a;
+}
 .App .toolbar {
   display: flex;
   flex-direction: row;

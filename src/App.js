@@ -114,15 +114,18 @@ console.log(`fields.${category}`);
   }
 
   return (
-    <div className="App container">
+    <div className="App container" onClick={(el) => {
+			if (el !== 'input#menu-checkbox') document.getElementById("menu-checkbox").checked = false;
+			console.log(el)}
+		}>
       <header>
 	      <div className="toolbar">
 	        <button className="btn btn-info" onClick={fetchFunction}>
 	          Fetch recipes
 	        </button>
 	      </div>
-        <h1>Limited Recipes</h1>
-        <h6>Better be fast</h6>
+        <h1><span>Alf</span><span>red</span><span>o's</span></h1>
+        <h6>Easy Eat Yum</h6>
       </header>
 
       <Router>

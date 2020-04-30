@@ -11,6 +11,7 @@ import "./styles/fonts.css";
 import Backgrounds from "./backgrounds.json";
 import RecipeComponent from "./components/RecipeComponent";
 import Menu from "./components/Menu";
+import Login from "./components/Login";
 
 // Setup Contentful client
 // Content model is hosted on Alfredo's account
@@ -49,7 +50,7 @@ export default function App() {
    ***/
   const RandomBackground = ({ backgrounds }) => {
     let curCategory = "";
-    // if the category is set to anything else than random,
+    // if the category is set to anything else than home,
     // we need to go up to the content root first
     // because of the Route (e.g. /category/vegetarian)
     curCategory = category !== "home" ? "../../" : "";
@@ -131,7 +132,7 @@ export default function App() {
     <div className="App container">
       <header>
         <div className="toolbar">
-          <button className="btn btn-info" onClick={fetchFunction}>
+          <button className="btn btn-info btn-toolbar" onClick={fetchFunction}>
             Fetch recipes
           </button>
         </div>
@@ -146,6 +147,7 @@ export default function App() {
 
       <Router>
         <Menu />
+        <Login />
         <section id="recipes">
           <Switch>
             <Route path="/category/:categoryName">

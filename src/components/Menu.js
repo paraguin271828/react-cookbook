@@ -4,7 +4,6 @@ import "../styles/Menu.css";
 
 export default function Menu() {
   const deactivateMenu = () => {
-    document.removeEventListener("click", deactivateMenu, false);
     document.getElementById("menu-checkbox").checked = false;
   }
   return (

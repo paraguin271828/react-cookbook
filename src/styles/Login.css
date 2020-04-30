@@ -1,0 +1,108 @@
+#login-container {
+  text-align: left;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  z-index: 1;
+}
+
+#login-container input[type="checkbox"] {
+  position: absolute;
+  left: -9999px;
+}
+#login-container label {
+  cursor: pointer;
+  text-align: left;
+  position: relative;
+  margin: 1rem;
+  left: 0;
+  z-index: 10;
+}
+
+#login-label::before {
+  content: 'Login';
+  display: block;
+}
+
+#login-bg {
+  position: absolute;
+  display: none;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(5px) contrast(.8);
+  transform: scale(1.8);
+  transition: display 1000ms linear;
+  background: rgba(34,34,34,.8);
+  overflow: hidden;
+  z-index: 4;
+}
+
+#login {
+  color: #fff;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -160vw;
+  margin: 0;
+  padding: 5rem 1rem;
+  width: auto;
+  min-width: 50vw;
+  transition: right 250ms linear;
+  overflow-y: hidden;
+  background: linear-gradient(#138496, #084a55);
+  z-index: 5;
+}
+
+#login input {
+  margin: 15px auto;
+  width: 90%;
+}
+
+#login label {
+  display: none;
+}
+
+#login-container input[type="checkbox"]:checked + label::before {
+  content: '\f00d';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  display: block;
+}
+
+#login-container input[type="checkbox"]:checked ~ form#login {
+  right: 0;
+  width: auto;
+  min-width: 50vw;
+  transition: right 250ms ease-out 0s;
+}
+
+#login-container input[type="checkbox"]:checked ~ #login-bg {
+  display: block;
+  z-index: 4;
+}
+
+/***
+*** MEDIA QUERIES
+***/
+@media screen and (max-width: 479px) {
+  #login-container input[type="checkbox"]:checked ~ form {
+    min-width: 95vw;
+    transition: left 500ms ease-out 0s;
+  }
+
+  #login-container input[type="checkbox"]:checked + label::before {
+    right: -80vw;
+    transition: right 500ms ease-out 100ms, color 250ms linear;
+  }
+
+  #login {
+    right: -480px;
+    width: auto;
+    min-width: 95vw;
+    transition: left 250ms linear;
+  }
+}

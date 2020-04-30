@@ -128,10 +128,7 @@ export default function App() {
   }
 
   return (
-    <div className="App container" onClick={(el) => {
-			if (el !== 'input#menu-checkbox') document.getElementById("menu-checkbox").checked = false;
-			console.log(el)}
-		}>
+    <div className="App container">
       <header>
         <div className="toolbar">
           <button className="btn btn-info" onClick={fetchFunction}>

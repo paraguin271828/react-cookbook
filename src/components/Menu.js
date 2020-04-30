@@ -3,14 +3,17 @@ import {Link} from "react-router-dom";
 import "../styles/Menu.css";
 
 export default function Menu() {
-  const deactivateMenu = () => document.getElementById("menu-checkbox").checked = false;
+  const deactivateMenu = () => {
+    document.removeEventListener("click", deactivateMenu, false);
+    document.getElementById("menu-checkbox").checked = false;
+  }
   return (
     <div id="menu-container">
       <input type="checkbox" id="menu-checkbox" />
-      <label htmlFor="menu-checkbox">
+      <label htmlFor="menu-checkbox" id="menu-label">
         &nbsp;
       </label>
-
+      <div id="menu-bg" onClick={deactivateMenu}></div>
 			<nav id="menu">
         <h3>Menu</h3>
 			  <ul>

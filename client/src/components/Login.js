@@ -51,11 +51,11 @@ export default function Menu() {
       <label htmlFor="login-checkbox" id="login-label" className="btn btn-info btn-toolbar"></label>
       <div id="login-bg" onClick={hideLogin}></div>
       <form id="login" method="post" onSubmit={userLogin}>
-        <input type="text" id="username" name="user" placeholder="Username" onChange={handleInput} />
+        <input type="text" id="username" name="user" placeholder="Username" required="required" onChange={handleInput} />
         <label for="username" id="username-label">
           Username
         </label>
-        <input type="text" id="password" name="password" placeholder="Password" onChange={handleInput} />
+        <input type="password" id="password" name="password" placeholder="Password" required="required" onChange={handleInput} />
         <label for="password" id="password-label">
           Password
         </label>

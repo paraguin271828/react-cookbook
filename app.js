@@ -18,18 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'client/build')));
-  //  app.get('*', (req, res) => {    res.sendfile(path.join(__dirname = 'client/build/index.html'));
-
-  app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '/client/build/index.html'));
-  });
-} else {
-  app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '/client/public/index.html'));
-  });
-}
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -48,6 +37,10 @@ app.use(function (err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/client/build/index.html'));
 });
 
 module.exports = app;

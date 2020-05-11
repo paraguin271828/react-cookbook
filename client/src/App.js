@@ -12,6 +12,8 @@ import Backgrounds from "./backgrounds.json";
 import RecipeComponent from "./components/RecipeComponent";
 import Menu from "./components/Menu";
 import Login from "./components/Login";
+import Header from "./components/Header";
+import AddRecipe from "./components/AddRecipe";
 
 // Setup Contentful client
 // Content model is hosted on Alfredo's account
@@ -129,25 +131,10 @@ export default function App() {
   }
 
   return (
-    <div className="App container">
-      <header>
-        <div className="toolbar">
-          <button className="btn btn-info btn-toolbar" onClick={fetchFunction}>
-            Fetch recipes
-          </button>
-        </div>
-        <h1><span>Alf</span><span>red</span><span>o's</span></h1>
-        <img
-          id="rotatingpizza"
-          src="/images/backgrounds/pizza.png"
-          height="120"
-        />
-        <h6>Easy Eat Yum</h6>
-      </header>
+    <Router>
+      <div className="App container">
+        <Header fetchFunction={() =>fetchFunction()} />
 
-      <Router>
-        <Menu />
-        <Login />
         <section id="recipes">
           <Switch>
             <Route path="/category/:categoryName">
@@ -160,6 +147,9 @@ export default function App() {
                   <span className="sr-only">Loading...</span>
                 </div>
               )}
+            </Route>
+            <Route path="/addRecipe">
+              <AddRecipe />
             </Route>
             <Route path="/">
               <FilteredRecipes />
@@ -174,8 +164,8 @@ export default function App() {
             </Route>
           </Switch>
         </section>
-      </Router>
-      <RandomBackground backgrounds={backgrounds} />
-    </div>
+        <RandomBackground backgrounds={backgrounds} />
+      </div>
+    </Router>
   );
 }

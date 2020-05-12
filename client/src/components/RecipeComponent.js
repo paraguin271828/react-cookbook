@@ -1,9 +1,11 @@
 import React from "react";
 import Markdown from "react-markdown";
+import addToFavorites from "./DataHandler"; // function for adding recipe to db
 import "../styles/RecipeComponent.css";
 
 export default function RecipeComponent({ data, deleteItem }) {
   const placeholderImg = "";
+
   //console.log(ingredients);
 
   //old structure below change due contentful
@@ -73,6 +75,9 @@ export default function RecipeComponent({ data, deleteItem }) {
             </div>
 
             <div className="card-footer toolbar">
+              <button type="button" className="btn btn-primary" onClick={() => addToFavorites(data)}>
+                <i className="fas fa-star" /> Favorite
+              </button>
               <button type="button" className="btn btn-danger" onClick={deleteItem}>
                 <i className="fas fa-trash-alt" /> Delete
               </button>

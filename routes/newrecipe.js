@@ -5,7 +5,7 @@ const router = express.Router();
 router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
 
-router.post('/', (req, res) => {
+router.post('/convert', (req, res) => {
   const data = req.body;
   const categories = [data.meat, data.vegetarian, data.vegan];
 

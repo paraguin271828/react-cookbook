@@ -8,6 +8,7 @@ const logger = require('morgan');
 const usersRouter = require('./routes/users');
 const recipeCategoriesRouter = require('./routes/rCategories');
 const newRecipeRouter = require('./routes/newrecipe');
+const newIngredient = require('./routes/newingredient');
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use(cookieParser());
 app.use('/users', usersRouter);
 app.use('/rCategories', recipeCategoriesRouter);
 app.use('/newrecipe', newRecipeRouter);
+app.use('/newingredient', newIngredient);
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 

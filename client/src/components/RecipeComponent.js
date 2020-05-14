@@ -75,7 +75,7 @@ export default function RecipeComponent({ data, deleteItem }) {
             </div>
 
             <div className="card-footer toolbar">
-              <button type="button" className="btn btn-primary" onClick={() => addToFavorites(data)}>
+              <button type="button" className="btn btn-primary" onClick={() => addToFavorites(data, 'convert')}>
                 <i className="fas fa-star" /> Favorite
               </button>
               <button type="button" className="btn btn-danger" onClick={deleteItem}>

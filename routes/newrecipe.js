@@ -5,6 +5,7 @@ const router = express.Router();
 router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
 
+// route for converting former used contentful items to the new database structure
 router.post('/convert', (req, res) => {
   const data = req.body;
   const categories = [data.meat, data.vegetarian, data.vegan];
@@ -35,5 +36,9 @@ router.post('/convert', (req, res) => {
 
   res.send(data);
 });
+
+router.post('/', (req, res) => {
+  console.log(req.body);
+})
 
 module.exports = router;

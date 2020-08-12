@@ -32,7 +32,7 @@ export default function Menu() {
       if (resData === "success") {
         console.log("successfully logged in.")
         history.push("/");
-      };
+      }
       else {console.log("An error occured while logging in.")}
     })
     .catch(err => {

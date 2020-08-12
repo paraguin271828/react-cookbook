@@ -51,8 +51,9 @@ console.log(searchResult);
   const searchResultComponent = searchResult.map((el, index) => <SearchResult key={index} prop={el} />);
 
   const handleInput = (e, searchType) => {
-    setIngSearch(e.target.value);
-    searchFunc(e.target.value, searchType);
+    if (searchType === 'ingredients') setIngSearch(e.target.value);
+    else if (searchType === 'categories') setCatSearch(e.target.value);
+      searchFunc(e.target.value, searchType);
   }
 
   useEffect(() => {

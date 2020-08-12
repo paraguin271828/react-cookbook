@@ -28,6 +28,16 @@ const client = contentful.createClient({
 	vegetarian: "https://cdn.contentful.com/spaces/fq3y9i3n1f0a/entries?access_token=Sdqy2_2zkT4xfgCySaZ9loL93bDbnFdUfibDdCRhZ5Y&fields.vegetarian=true"
 }*/
 
+// const api_key = "c2230a382f204d5baf6c80cdc0569aea"; // felix
+// const api_key = "4852133db1384781b04fd81badd09bfa" // alfredo
+const api_key = "164c4f1bc5fa47919f2d66ee409af504"; // dennis
+
+const api_url = {
+    random: "https://api.spoonacular.com/recipes/random/?apiKey=" + api_key + "&number=3",
+    vegetarian: "https://api.spoonacular.com/recipes/random/?apiKey=" + api_key + "&number=3&tags=vegetarian",
+    vegan: "https://api.spoonacular.com/recipes/random/?apiKey=" + api_key + "&number=3&tags=vegan"
+}
+
 export default function App() {
   const [recipeResult, setRecipeResult] = useState([null]);
 
@@ -73,14 +83,14 @@ export default function App() {
     );
   };
 
-  /*** keeping this for later when switching from contentful to local API
+  /*** keeping this for later when switching from contentful to local API */
     const fetchFunction = () => {
       fetch(api_url[category])
         .then(res => res.json())
         .then(res => setRecipeResult(res))
-        .catch(err => console.log("Why do we still get this error?\n"));
+        .catch(err => console.error("Why do we still get this error?\n",err));
     };
-***/
+
 
   // TODO: after migration to local API, don't forget to remove contentful in dependencies
 
@@ -90,7 +100,7 @@ export default function App() {
    *    https://www.contentful.com/developers/docs/javascript/tutorials/using-js-cda-sdk/
    *    Retrieved items are stored in recipeResult as an array
    ***/
-  const fetchFunction = () => {
+  /*const fetchFunction = () => {
     client
       .getEntries({
         content_type: "recipe",
@@ -100,8 +110,9 @@ export default function App() {
       })
       .then((entries) => setRecipeResult(entries))
       .catch((err) => console.log("An error occured: " + err));
-  };
+  };*/
 
+/*
   const fetchedRecipes =
     recipeResult.items &&
     recipeResult.items.map((element, index) => {
@@ -113,7 +124,20 @@ export default function App() {
           deleteItem={() => deleteItem(index)}
         />
       );
-    });
+    });*/
+
+    const fetchedRecipes =
+      recipeResult.recipes &&
+      recipeResult.recipes.map((element, index) => {
+        console.log("element: " + JSON.stringify(element.fields));
+        return (
+          <RecipeComponent
+            key={index}
+            data={element}
+            deleteItem={() => deleteItem(index)}
+          />
+        );
+      });
 
   const FilteredRecipes = () => {
     let { categoryName } = useParams();

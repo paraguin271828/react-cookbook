@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import CategoryList from './CategoryList';
 import OptionListComponent from './OptionListComponent';
+import SearchResult from './SearchResult';
 import '../styles/AddRecipe.css';
 
 export default () => {
@@ -9,7 +10,9 @@ export default () => {
   const [presetCategories, setPresetCategories] = useState(null);
   const [ingrLabels, setIngrlabels] = useState(null);
   const [catLabels, setCatlabels] = useState(null);
-  const [ingSearch, setIngSearch] = useState('');
+  const [ingSearch, setIngSearch] = useState(null);
+  const [catSearch, setCatSearch] = useState(null);
+  const [searchResult, setSearchResult] = useState([null]);
 
   const getIngredients = async () => {
     // fetch already existing ingredients from db to populate category listing
@@ -38,14 +41,19 @@ export default () => {
   const searchFunc = (q, searchType) => {
     console.log('search function called');
 
-    axios.get('/search/'+searchType+'?q='+q)
-      .then(result => console.log(result))
-      .catch ((err) => console.error(err));
+    if (q.length > 1) {
+      axios.get('/search/'+searchType+'?q='+q)
+        .then(result => setSearchResult(result.data))
+        .catch ((err) => console.error(err));
+    }
   }
+console.log(searchResult);
+  const searchResultComponent = searchResult.map((el, index) => <SearchResult key={index} prop={el} />);
 
   const handleInput = (e, searchType) => {
-    setIngSearch(e.target.value);
-    searchFunc(e.target.value, searchType);
+    if (searchType === 'ingredients') setIngSearch(e.target.value);
+    else if (searchType === 'categories') setCatSearch(e.target.value);
+      searchFunc(e.target.value, searchType);
   }
 
   useEffect(() => {
@@ -72,17 +80,15 @@ export default () => {
       </label>
     ));
 
-    const fetchedItems = (items, type) => { console.log(items); return (
+    const fetchedItems = (items, type) => { return (
       items && items.map((val, index) => (
-        <OptionListComponent key={val[0]} props={val} type={type} propsLabels={ingrLabels} setLabels={label => handleIngredients(label)} />
+        <OptionListComponent key={index} props={val} type={type} propsLabels={ingrLabels} setLabels={label => handleIngredients(label)} />
       )))
     };
 
     const fetchedCategories = presetCategories && presetCategories.map((category, index) => (
       <CategoryList key={category.categoryid} category={category} catLabels={catLabels} setCatLabels={label => handleCategories(label)} />
     ));
-
-    console.log(presetCategories);
 
     return (
       <form action="newrecipe" method="post">
@@ -101,7 +107,7 @@ export default () => {
         <div className="row">
           <div id="recipe-ingredients" className="col">
             {presetIngredients ? (
-              <ul id="category-list">
+              <ul id="category-list" className="col-md-6 col-sm12">
                 {fetchedItems(presetIngredients, 'ingredients')}
               </ul>
             ) : (
@@ -112,10 +118,13 @@ export default () => {
             <input type="text"
                   name="ingredientsearch"
                   id="ingredients-search"
-                  placeholder =""
+                  placeholder = "Ingredient"
                   value={ingSearch}
                   onChange={e => handleInput(e, 'ingredients')}
              />
+           <div className="suggestions">
+             {searchResult ? searchResultComponent : <span></span> }
+            </div>
           </div>
         </div>
 
@@ -134,9 +143,12 @@ export default () => {
                   name="categorysearch"
                   id="category-search"
                   placeholder =""
-                  value={ingSearch}
+                  value={catSearch}
                   onChange={e => handleInput(e, 'categories')}
              />
+           <div className="suggestions">
+             {searchResult ? searchResultComponent : <span></span> }
+            </div>
           </div>
           <div id="recipe-category-list" className="col-6">
             {catLabels ? (

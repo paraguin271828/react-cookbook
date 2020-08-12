@@ -1,10 +1,7 @@
 import React, {useState, useEffect} from "react";
 
 export default ({category, catLabels, setCatLabels}) => {
-  console.log(catLabels);
-
   const addCategory = (target, catValue, categoryId) => {
-    console.log(target.checked);
     const catId = catValue + '-' + categoryId;
     const list = document.getElementById("recipe-category-list");
     let newList = Object.assign({}, catLabels);
@@ -25,9 +22,6 @@ export default ({category, catLabels, setCatLabels}) => {
     }
 
     setCatLabels(newList);
-
-    console.log("newlist: ");
-    console.log(newList);
   }
 
 return (

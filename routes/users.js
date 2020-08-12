@@ -1,4 +1,4 @@
-require('dotenv').config({ debug: process.env.DEBUG });
+
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const router = express.Router();

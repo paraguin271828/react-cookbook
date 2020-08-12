@@ -1,8 +1,9 @@
 import React, {useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import "../styles/Login.css";
 
 export default function Menu() {
+  const history = useHistory();
   const [userInput, setUserInput] = useState({
     user: "",
     password: ""
@@ -28,7 +29,10 @@ export default function Menu() {
     })
     .then(resData => {
       console.log(resData);
-      if (resData === "success") console.log("successfully logged in.");
+      if (resData === "success") {
+        console.log("successfully logged in.")
+        history.push("/");
+      }
       else {console.log("An error occured while logging in.")}
     })
     .catch(err => {

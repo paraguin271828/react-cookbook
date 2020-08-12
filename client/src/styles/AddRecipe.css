@@ -10,6 +10,10 @@ form .row {
   margin: 1rem;
 }
 
+form ul {
+  display: none;
+}
+
 #category-list li {
   text-align: left;
   list-style-type: none;
@@ -42,4 +46,12 @@ form .row {
 
 button {
   margin: 0 auto;
+}
+
+.suggestion {
+  border-left: 2px solid #ccc;
+  border-right: 2px solid #ccc;
+}
+.suggestion:last-of-type {
+  border-bottom: 1px solid #ccc;
 }
